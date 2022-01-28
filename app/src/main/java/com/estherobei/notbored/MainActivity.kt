@@ -1,10 +1,10 @@
 package com.estherobei.notbored
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
-import androidx.viewbinding.ViewBinding
 import com.estherobei.notbored.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -21,37 +21,33 @@ class MainActivity : AppCompatActivity() {
         binding.etParticipants.doAfterTextChanged {
             whenTextChanged()
         }
+        binding.termsAndCond.setOnClickListener {
+            startActivity(Intent(this, Terms::class.java))
+        }
+        binding.btnStart.setOnClickListener {
+            startActivity(Intent(this, Activities::class.java))
+        }
+        actionBar?.hide()
     }
 
-    fun whenTextChanged(){
+    //Start Button activate
+    private fun whenTextChanged() {
         val a = verifyInput(binding.etParticipants.text.toString())
 
         when (a) {
             true -> binding.btnStart.isEnabled = true
-          else -> binding.btnStart.isEnabled = false
+            else -> binding.btnStart.isEnabled = false
         }
-
-
     }
 
 
-  fun verifyInput(value: String): Boolean = value.toInt()!= 0
-
-//  fun verifyInput(value: String): Boolean{
-//
-//     if(value.toInt() != 0 && value.isNotEmpty()){
-//            return true
-//        }
-//        else{
-//            return false
-//        }
-//    }
-
-
-
-
-
-
-
-
+    //    fun verifyInput(value: String): Boolean = value.toInt() != 0
+    private fun verifyInput(value: String): Boolean {
+        return try {
+            value.toInt() != 0 && value.isNotEmpty()
+        } catch (e: Exception) {
+            Toast.makeText(this, "Put a valid number", Toast.LENGTH_SHORT).show()
+            false
+        }
+    }
 }
