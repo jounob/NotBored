@@ -10,14 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NotBored">
         <activity
-            android:name=".Activities"
+            android:name=".ui.activities.Activities"
             android:exported="false" />
         <activity
-            android:name=".Terms"
+            android:name=".ui.home.Terms"
             android:exported="false" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.home.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

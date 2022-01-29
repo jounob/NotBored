@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/blue_light"
     android:foregroundTint="#36FFFFFF"
-    tools:context=".Terms">
+    tools:context=".ui.home.Terms">
 
     <TextView
         android:id="@+id/textView"

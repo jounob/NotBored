@@ -1,4 +1,4 @@
-package com.estherobei.notbored
+package com.estherobei.notbored.ui.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.estherobei.notbored.databinding.ActivityMainBinding
+import com.estherobei.notbored.ui.activities.Activities
 
 class MainActivity : AppCompatActivity() {
 

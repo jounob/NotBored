@@ -1,4 +1,4 @@
-package com.estherobei.notbored
+package com.estherobei.notbored.ui.home
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
