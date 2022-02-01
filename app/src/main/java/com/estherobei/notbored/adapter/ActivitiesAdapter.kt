@@ -8,14 +8,14 @@ import com.estherobei.notbored.R
 import com.estherobei.notbored.databinding.SingleActivityBinding
 import com.estherobei.notbored.model.Activity
 
-class ActivitiesAdapter(var activitiesList: List<Activity>) :
+class ActivitiesAdapter(var activitiesList: List<Activity>, val clickListener: ClickListener) :
     RecyclerView.Adapter<ActivityViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActivityViewHolder {
         val view =
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.single_activity, parent, false)
-        return ActivityViewHolder(view)
+        return ActivityViewHolder(view, this.clickListener)
     }
 
     override fun onBindViewHolder(holder: ActivityViewHolder, position: Int) {
@@ -27,10 +27,19 @@ class ActivitiesAdapter(var activitiesList: List<Activity>) :
     }
 }
 
-class ActivityViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class ActivityViewHolder(view: View, clickListener: ClickListener) : RecyclerView.ViewHolder(view) {
     private val binding = SingleActivityBinding.bind(view)
     val name = binding.textView2
     fun bind(activity: Activity) {
         name.text = activity.title
     }
+    init {
+        binding.imBtnNext.setOnClickListener {
+            clickListener.onItemClick(adapterPosition)
+        }
+    }
+}
+
+interface ClickListener {
+    fun onItemClick(position: Int)
 }

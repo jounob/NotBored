@@ -22,11 +22,15 @@ class MainActivity : AppCompatActivity() {
         binding.etParticipants.doAfterTextChanged {
             whenTextChanged()
         }
+
         binding.termsAndCond.setOnClickListener {
             startActivity(Intent(this, Terms::class.java))
         }
+
         binding.btnStart.setOnClickListener {
-            startActivity(Intent(this, Activities::class.java))
+            val intent = Intent(this, Activities::class.java)
+            intent.putExtra("numberParticipants", binding.etParticipants.text.toString())
+            startActivity(intent)
         }
         actionBar?.hide()
     }
